@@ -11,7 +11,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const { register, setValue, handleSubmit, control } = useForm();
 
   const onSubmit = data => {
@@ -25,19 +25,19 @@ const LoginScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.background}>
+    <View style={styles.background}>
       <ScrollView
         style={styles.scrollView}
         stkeyboardShouldPersistTaps="handled"
       >
         <View
           style={{
-            height: '90%',
+            height: 350,
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          <Text style={styles.title}>Welcome back...</Text>
+          <Text style={styles.title}>Welcome back!</Text>
         </View>
         <View style={styles.form}>
           <Text style={styles.label}>Email</Text>
@@ -86,10 +86,24 @@ const LoginScreen = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <View style={{ flex: 1 }} />
         </View>
+        <View
+          style={{
+            height: 100,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Text style={{ color: '#fffaff', fontSize: 16 }}></Text>
+          <Button
+            onPress={() => navigation.navigate('Signup')}
+            title="Don't have an account? Sign up!"
+            color="white"
+          />
+        </View>
+        <View style={{ height: 300 }} />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -103,10 +117,9 @@ const styles = StyleSheet.create({
   form: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#fffaff',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
-    paddingTop: 30,
-    paddingBottom: 30,
+    padding: 30,
   },
   background: {
     flex: 1,
@@ -128,7 +141,9 @@ const styles = StyleSheet.create({
   label: {
     color: '#3d348b',
     fontWeight: '500',
-    margin: 20,
+    marginBottom: 20,
+    marginTop: 20,
+    alignSelf: 'flex-start',
   },
   scrollView: {
     flex: 1,
@@ -143,7 +158,7 @@ const styles = StyleSheet.create({
   },
   touchable: {
     height: 70,
-    width: '80%',
+    width: '100%',
     borderRadius: 10,
   },
   container: {
@@ -152,8 +167,8 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   input: {
-    backgroundColor: '#ffffff',
-    width: '80%',
+    backgroundColor: '#f7f7f7',
+    width: '100%',
     height: 40,
     padding: 10,
     borderRadius: 4,
